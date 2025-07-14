@@ -1,0 +1,9 @@
+{
+	"name": "demo-adf-pipeline-pb",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "307e8dd0-7b27-4d89-98ab-22cb8c6f22c5",
+		"tenantId": "3df3b029-49df-470e-bb4e-90abee640b77"
+	}
+}
