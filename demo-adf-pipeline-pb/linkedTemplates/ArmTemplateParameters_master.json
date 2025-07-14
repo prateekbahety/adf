@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "demo-adf-pipeline-pb"
+		},
+		"BlobStorage_connectionString": {
+			"value": ""
+		},
+		"SourceDB_password": {
+			"value": ""
+		},
+		"TargetDb_password": {
+			"value": ""
+		},
+		"SourceDB_properties_typeProperties_server": {
+			"value": "testsqlserverpb.database.windows.net"
+		},
+		"SourceDB_properties_typeProperties_database": {
+			"value": "sourcetestdb"
+		},
+		"SourceDB_properties_typeProperties_userName": {
+			"value": "prateekbahety"
+		},
+		"TargetDb_properties_typeProperties_server": {
+			"value": "testsqlserverpb.database.windows.net"
+		},
+		"TargetDb_properties_typeProperties_database": {
+			"value": "testdb"
+		},
+		"TargetDb_properties_typeProperties_userName": {
+			"value": "prateekbahety"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
