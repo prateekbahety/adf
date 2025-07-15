@@ -77,7 +77,9 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"writeBehavior": "insert",
-									"sqlWriterUseTableLock": false
+									"sqlWriterUseTableLock": false,
+									"tableOption": "autoCreate",
+									"disableMetricsCollection": false
 								},
 								"enableStaging": false,
 								"translator": {
@@ -103,10 +105,66 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "AzureSqlTable1",
-									"type": "DatasetReference"
+									"referenceName": "AzureSqlTable3",
+									"type": "DatasetReference",
+									"parameters": {
+										"ud_table_name": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							]
+						},
+						{
+							"name": "Stored procedure1",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "Copy data1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[insertaudit]",
+								"storedProcedureParameters": {
+									"FileName": {
+										"value": {
+											"value": "@item().name",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"Pipelinename": {
+										"value": {
+											"value": "@pipeline().Pipeline",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"RowCnt": {
+										"value": {
+											"value": "@activity('Copy data1').output.rowscopied",
+											"type": "Expression"
+										},
+										"type": "Int32"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "TargetDb",
+								"type": "LinkedServiceReference"
+							}
 						}
 					]
 				}
