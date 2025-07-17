@@ -1,5 +1,5 @@
 {
-	"name": "pipeline3",
+	"name": "Assigning values from file to variable",
 	"properties": {
 		"activities": [
 			{
