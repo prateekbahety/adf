@@ -19,7 +19,11 @@
 						"x-ms-version": "2017-11-09",
 						"x-ms-blob-type": "BlockBlob"
 					},
-					"url": "https://pipelinedemodatapb.blob.core.windows.net/outputfiles/dbo.EMPLOYEE.txt"
+					"url": "https://pipelinedemodatapb.blob.core.windows.net/outputfiles/dbo.EMPLOYEE.txt",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://storage.azure.com"
+					}
 				}
 			},
 			{
