@@ -19,23 +19,21 @@
 						"x-ms-version": "2017-11-09",
 						"x-ms-blob-type": "BlockBlob"
 					},
-					"url": "https://pipelinedemodatapb.blob.core.windows.net/outputfiles/dbo.EMPLOYEE.txt",
+					"url": "https://pipelinedemodatapb.blob.core.windows.net/outputfiles/test.txt",
 					"authentication": {
 						"type": "MSI",
-						"resource": "https://storage.azure.com"
+						"resource": "https://storage.azure.com/"
 					}
 				}
 			},
 			{
-				"name": "input",
+				"name": "setting the variable",
 				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Web1",
 						"dependencyConditions": [
-							"Completed"
+							"Failed"
 						]
 					}
 				],
@@ -45,16 +43,16 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "fileoutput",
+					"variableName": "filecontent",
 					"value": {
-						"value": "@activity('Web1').output.Response",
+						"value": "@activity('Web1').output",
 						"type": "Expression"
 					}
 				}
 			}
 		],
 		"variables": {
-			"fileoutput": {
+			"filecontent": {
 				"type": "String"
 			}
 		},
