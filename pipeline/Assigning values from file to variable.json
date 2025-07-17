@@ -25,6 +25,8 @@
 			{
 				"name": "input",
 				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Web1",
